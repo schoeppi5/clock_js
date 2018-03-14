@@ -1,0 +1,121 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: arial;
+	font-size: 1.5rem;
+}
+#clock {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	z-index: 3;
+}
+.clock-con, .digital-con {
+	z-index: 3;
+	cursor: move;
+}
+.drop {
+	display: none;
+	float: left;
+}
+.sub-btn{
+	cursor: pointer;
+}
+.sub-btn div {
+	float: left;
+	position: absolute;
+	left: 0;
+}
+.sub-con {
+	overflow-y: scroll;
+	max-height: 100px;
+}
+.sub-con::-webkit-scrollbar {
+	display: none;
+}
+.sub {
+	display: none;
+	float: left;
+	z-index. 2;
+	width: 100%;
+	text-align: left;
+}
+.sub img {
+	width: 100px;
+	height: 100px;
+}
+.dropdown {
+	top: 0;
+	left: 0;
+	position: absolute;
+	display: block;
+	width: 100%;
+	max-height: 100%;
+	z-index: 2;
+}
+ul li {
+	float: left;
+	display: block;
+	z-index: 2;
+	width: 100%;
+	text-align: left;
+}
+ul li label {
+	cursor: pointer;
+	color: black;
+	background-color: white;
+}
+label input {
+	display: none;
+}
+.digital-con {
+	width: 100%;
+	height: 100%;
+	padding-top: 15%;
+	display: none;
+}
+.digital-center {
+	display: block;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: auto;
+	padding-right. auto;	
+	width: 100%;
+	float: left;
+	z-index: 3;
+}
+
+.digital {
+	display: inline-block;
+	font-family: consolas;
+	text-align: center;
+	font-size: 4rem;
+	margin: 0;
+}
+	
+.small {
+	font-size: 2rem;
+}
+
+.big {
+	font-size: 6rem;
+}
+
+.disabled {
+	color: grey;
+}
+			
+.hidden {
+	display: none;
+}
+
+.nightmode {
+	color: #ffffff;
+	background-color: black;
+}
+
+.night-hamburger, .night-hamburger::before, .night-hamburger::after {
+	background-color: #ffffff;
+}

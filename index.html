@@ -1,0 +1,131 @@
+<html html>
+	<head>
+		<title>Clock</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="hamburgers.css" type="text/css" />
+		<link rel="stylesheet" href="style.css" type="text/css" />
+		<link rel="shortcut icon" href="icon.png" />
+	</head>
+	<body>
+		<ul class="dropdown">
+			<li class="drop-btn"><button class="hamburger hamburger--arrow" type="button" id="dropbtn"><span class="hamburger-box"><span class="hamburger-inner"></span></span></button></li>
+			<li class="drop"><label>Milliseconds<input type="checkbox" checked="true" id="milli" /></label></li>
+			<li class="drop"><label>Seconds<input type="checkbox" checked="true" id="sec" /></label></li>
+			<li class="drop"><label class="disabled">Digital<input type="checkbox" checked="false" id="digit" /></label></li>
+			<li class="drop"><label class="disabled">Date<input type="checkbox" checked="false" id="dateSwitch" /></label></li>
+			<li class="drop"><span class="sub-btn">Dials&#x25BC;</span>
+				<div>
+					<ul class="sub-con">
+						<li class="sub"><img class="img_click img" src="clock_1.jpg" /></li>
+						<li class="sub"><img class="img_click" src="clock_2.gif" /></li>
+						<li class="sub"><img class="img_click" src="clock_3.jpg" /></li>
+						<li class="sub"><img class="img_click" src="clock_4.jpg" /></li>
+					</ul>
+				</div>
+			</li>
+			<li class="drop"><label class="disabled">Nightmode<input type="checkbox" checked="false" id="night" /></label></li>
+			<li class="drop"><label>Hands<input type="checkbox" checked="true" id="hands" /></label></li>
+			<li class="drop"><label>Rotate<input type="checkbox" checked="true" id="rotate" /></label></li>
+		</ul>
+		<div class="clock-con">
+			<canvas id="clock" width="800" height="800">U dont support dis!</canvas>
+			<script type="text/javascript" src="clock.custom.js"></script>
+		</div>
+		<div class="digital-con">
+			<div class="digital-center"><span class="digital big" id="date"></span></div>
+			<div class="digital-center"><span class="digital" id="time"></span></div>
+			<div class="digital-center"><span class="digital small" id="timestamp"></span></div>
+		</div>
+		<script>
+			$('document').ready(function()
+			{
+				var fullscreen = false;
+				
+				$('.hamburger').click(function()
+				{
+					$(this).toggleClass('is-active');
+					$('.drop').slideToggle(200);
+				});
+				$('.sub-btn').click(function()
+				{
+					$('.sub').slideToggle(200);
+				});
+				$("input[type='checkbox']").change(function()
+				{
+					$(this).parent().toggleClass('disabled');
+				});
+				$('#digit').change(function()
+				{
+					$('.clock-con').stop().slideToggle(500);
+					$('.digital-con').stop().slideToggle(500);
+					$('.digital-con').css("margin-top", window.innerHeight / 2);
+				});
+				$('.img_click').click(function()
+				{
+					$('.img_click').removeClass('img');
+					$(this).addClass('img');
+				});
+				
+				$('#night').click(function()
+				{
+					$('.digital-con').toggleClass('nightmode');
+					$('.clock-con').toggleClass('nightmode');
+					$('label').toggleClass('nightmode');
+					$('.hamburger-inner').toggleClass('night-hamburger');
+					$('.hamburger-inner:before').toggleClass('night-hamburger');
+					$('.hamburger-inner:after').toggleClass('night-hamburger');
+					$('.sub-btn').toggleClass('nightmode');
+					$('body').toggleClass('nightmode');
+				});
+				
+				$('.digital-con').click(function(){$('.clock-con').click()});
+				
+				$('.clock-con').click(function()
+				{
+					var element = document.documentElement;
+					if(!fullscreen)
+					{
+						fullscreen = true;
+						$('.digital-con').css('cursor', 'none');
+						$('.clock-con').css('cursor', 'none');
+						if(element.requestFullscreen)
+						{
+							element.requestFullscreen();
+						}
+						else if(element.mozRequestFullScreen)
+						{
+							element.mozRequestFullScreen();
+						}
+						else if(element.msRequestFullscreen) 
+						{
+							element.msRequestFullscreen();
+						}
+						else if(element.webkitRequestFullscreen)
+						{
+							element.webkitRequestFullscreen();
+						}
+					}
+					else
+					{
+						fullscreen = false;
+						$('.digital-con').css('cursor', 'move');
+						$('.clock-con').css('cursor', 'move');
+						if(document.exitFullscreen)
+						{
+							document.exitFullscreen();
+						}
+						else if(document.mozCancelFullScreen)
+						{
+							document.mozCancelFullScreen();
+						}
+						else if(document.webkitExitFullscreen)
+						{
+							document.webkitExitFullscreen();
+						}
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
